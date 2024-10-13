@@ -58,72 +58,70 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Base Layer: QWERTY
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |  Tab   |   Q  |   W  |   E  |   R  |   T  |                              |   Y  |   U  |   I  |   O  |   P  |  Bksp  |
+ * |  Esc   |   Q  |   W  |   E  |   R  |   T  |                              |   Y  |   U  |   I  |   O  |   P  |  Bksp  |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |Ctrl/Esc|GUI/A |ALT/S |SFT/D |CTL/F |   G  |                              |   H  |   J  |   K  |   L  | ;  : |Ctrl/' "|
+ * |  Tab   |GUI/A |ALT/S |SFT/D |CTL/F |   G  |                              |CTl/H |SFT/J |ALT/K |GUI/L | ;  : |  ' "   |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * | LShift |   Z  |   X  |   C  |   V  |   B  | [ {  |CapsLk|  |F-keys|  ] } |   N  |   M  | ,  < | . >  | /  ? | RShift |
- * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        |Adjust| LGUI | LAlt/| Space| Nav  |  | Sym  | Space| AltGr| RGUI | Menu |
- *                        |      |      | Enter|      |      |  |      |      |      |      |      |
+ * | LShift |   Z  |   X  |   C  |   V  |   B  |      |CapsLk|  |F-keys|  ] } |   N  |   M  | ,  < | . >  | /  ? | RShift |
+ * |----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
+ *                        |      |      | Enter| Space| Sym  |  | Nav  | Space| Enter|      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_QWERTY] = LAYOUT(
-     KC_TAB  , KC_Q ,  KC_W   ,  KC_E  ,   KC_R ,   KC_T ,                                        KC_Y,   KC_U ,  KC_I ,   KC_O ,  KC_P , KC_BSPC,
-     KC_ESC , GUI_A ,  ALT_S  ,  SFT_D ,   CTL_F,   KC_G ,                                        KC_H,  CTL_J , SFT_K ,  ALT_L , GUI_L , KC_QUOTE,
-     KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , _______,KC_CAPS,     _______, _______, KC_N,   KC_M ,KC_COMM, KC_DOT ,KC_SLSH, KC_ENT,
-                                  _______, _______, KC_ENT, KC_SPC,TL_UPPR,     TL_LOWR, KC_SPC , KC_ENT, _______, _______
+     KC_ESC  , KC_Q ,  KC_W   ,  KC_E  ,   KC_R ,   KC_T ,                                        KC_Y,   KC_U ,  KC_I ,   KC_O ,  KC_P , KC_BSPC,
+     KC_TAB , GUI_A ,  ALT_S  ,  SFT_D ,   CTL_F,   KC_G ,                                        KC_H,  CTL_J , SFT_K ,  ALT_L , GUI_L , KC_QUOTE,
+     KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , KC_TRNS,KC_CAPS,     KC_TRNS, KC_TRNS, KC_N,   KC_M ,KC_COMM, KC_DOT ,KC_SLSH, KC_ENT,
+                                  KC_TRNS, KC_TRNS, KC_ENT, KC_SPC,TL_UPPR,     TL_LOWR, KC_SPC , KC_ENT, KC_TRNS, KC_TRNS
     ),
-
 /*
- * Nav Layer: Media, navigation
+ * Nav Layer: Navigation
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |        |      |      |      |      |      |                              | PgUp | Home |   ↑  | End  | VolUp| Delete |
+ * |    `   |   1  |   2  |   3  |   4  |   5  |                              |   6  |   7  |   8  |   9  |   0  | Delete |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |        |  GUI |  Alt | Ctrl | Shift|      |                              | PgDn |  ←   |   ↓  |   →  | VolDn| Insert |
+ * |        |  GUI |  Alt | Shift| Ctrl |      |                              |      |  ←   |   ↑  |   ↓  |   →  |        |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |ScLck |  |      |      | Pause|M Prev|M Play|M Next|VolMut| PrtSc  |
+ * |        |      |      |      |      |      |      |ScLck |  |      |      |      | Home |  End |      |      |        |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_NAV] = LAYOUT(
-      _______,  KC_1  ,  KC_2  ,  KC_3  ,  KC_4  , KC_5,                                         KC_6  ,  KC_7  ,  KC_8  ,  KC_9  ,  KC_0  , KC_DEL,
-      _______, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,                                     _______, KC_LEFT,  KC_UP , KC_DOWN,KC_RIGHT,_______,
-      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_END , _______, _______,_______,
-                                 _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+       KC_GRV,  KC_1  ,  KC_2  ,  KC_3  ,  KC_4  , KC_5,                                         KC_6  ,  KC_7  ,  KC_8  ,  KC_9  ,  KC_0  , KC_DEL,
+      KC_TRNS, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, KC_TRNS,                                     KC_TRNS, KC_LEFT,  KC_UP , KC_DOWN,KC_RIGHT,KC_TRNS,
+      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_HOME, KC_END , KC_TRNS, KC_TRNS,KC_TRNS,
+                                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
     ),
 
 /*
- * Sym Layer: Numbers and symbols
+ * Sym Layer: Symbols
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |    `   |  1   |  2   |  3   |  4   |  5   |                              |   6  |  7   |  8   |  9   |  0   |   =    |
+ * |    `   |  !   |  @   |  #   |  $   |  %   |                              |   &  |  *   |  (   |  )   |  `   |   ~    |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |    ~   |  !   |  @   |  #   |  $   |  %   |                              |   ^  |  &   |  *   |  (   |  )   |   +    |
+ * |        |      |  :   |  /   |  {   |      |                              |      |  -   |  =   |  '   |      |        |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |    |   |   \  |  :   |  ;   |  -   |  [   |  {   |      |  |      |   }  |   ]  |  _   |  ,   |  .   |  /   |   ?    |
+ * |        |      |  |   |  \   |  }   |      |      |      |  |      |      |      |  _   |  +   |  "   |      |        |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_SYM] = LAYOUT(
-      KC_GRV ,   KC_1 ,   KC_2 ,   KC_3 ,   KC_4 ,   KC_5 ,                                       KC_6 ,   KC_7 ,   KC_8 ,   KC_9 ,   KC_0 , KC_EQL ,
-     KC_TILD , KC_EXLM,  KC_AT , KC_HASH,  KC_DLR, KC_PERC,                                     KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_PLUS,
-     KC_PIPE , KC_BSLS, KC_COLN, KC_SCLN, KC_MINS, KC_LBRC, KC_LCBR, _______, _______, KC_RCBR, KC_RBRC, KC_UNDS, KC_COMM,  KC_DOT, KC_SLSH, KC_QUES,
-                                 _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+      KC_GRV , KC_EXLM,  KC_AT , KC_HASH,  KC_DLR, KC_PERC,                                     KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,  KC_GRV, KC_TILD,
+     KC_TRNS , KC_TRNS, KC_COLN, KC_SLSH, KC_LBRC, KC_TRNS,                                     KC_TRNS, KC_MINS,  KC_EQL, KC_QUOT, KC_TRNS, KC_TRNS,
+     KC_TRNS , KC_TRNS, KC_PIPE, KC_BSLS, KC_RBRC, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_UNDS, KC_PLUS,  KC_DQT, KC_TRNS, KC_TRNS,
+                                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
     ),
 
 /*
- * Function Layer: Function keys
+ * Function Layer: Function keys And media
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
  * |        |  F9  | F10  | F11  | F12  |      |                              |      |      |      |      |      |        |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |        |  F5  |  F6  |  F7  |  F8  |      |                              |      | Shift| Ctrl |  Alt |  GUI |        |
+ * |        |  F5  |  F6  |  F7  |  F8  |      |                              |      | Prev | Pause| Next | Mute |        |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * |        |  F1  |  F2  |  F3  |  F4  |      |      |      |  |      |      |      |      |      |      |      |        |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
@@ -132,10 +130,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        `----------------------------------'  `----------------------------------'
  */
     [_FUNCTION] = LAYOUT(
-      _______,  KC_F9 ,  KC_F10,  KC_F11,  KC_F12, _______,                                     _______, _______, _______, _______, _______, _______,
-      _______,  KC_F5 ,  KC_F6 ,  KC_F7 ,  KC_F8 , _______,                                     _______, KC_RSFT, KC_RCTL, KC_LALT, KC_RGUI, _______,
-      _______,  KC_F1 ,  KC_F2 ,  KC_F3 ,  KC_F4 , _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-                                 _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+      KC_TRNS,  KC_F9 ,  KC_F10,  KC_F11,  KC_F12, KC_TRNS,                                     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+      KC_TRNS,  KC_F5 ,  KC_F6 ,  KC_F7 ,  KC_F8 , KC_TRNS,                                     KC_TRNS, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_TRNS,
+      KC_TRNS,  KC_F1 ,  KC_F2 ,  KC_F3 ,  KC_F4 , KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
     ),
 
 // /*
@@ -168,45 +166,72 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 #ifdef OLED_ENABLE
+
 oled_rotation_t oled_init_user(oled_rotation_t rotation) { return OLED_ROTATION_180; }
+
+void printCurrentLayer(void) {
+  oled_write_P(PSTR("\nLayer: "), false);
+  switch (get_highest_layer(layer_state|default_layer_state)) {
+      case _QWERTY:
+          oled_write_P(PSTR("QWERTY\n\n"), false);
+          break;
+      case _NAV:
+          oled_write_P(PSTR("Navigation\n\n"), false);
+          break;
+      case _SYM:
+          oled_write_P(PSTR("Symbols\n\n"), false);
+          break;
+      case _FUNCTION:
+          oled_write_P(PSTR("Function/media\n\n"), false);
+          break;
+      default:
+          oled_write_P(PSTR("Undefined\n\n"), false);
+  }
+}
+
+void printActiveMods(void) {
+  char mod_str[25] = "";
+
+  led_t led_usb_state = host_keyboard_led_state();
+  if (led_usb_state.caps_lock) {
+    strcat(mod_str, "CPS ");
+  }
+
+  uint8_t mods = get_mods();
+  if (!mods) {
+    oled_write_ln(mod_str, false);
+    return;
+  }
+  if (mods & MOD_MASK_CTRL) {
+    strcat(mod_str, "Ctrl ");
+  }
+  if (mods & MOD_MASK_SHIFT) {
+    strcat(mod_str, "Shft ");
+  }
+  if (mods & MOD_MASK_ALT) {
+      strcat(mod_str, "Alt ");
+  }
+  if (mods & MOD_MASK_GUI) {
+      strcat(mod_str, "GUI ");
+  }
+  oled_write_ln(mod_str, false);
+}
 
 bool oled_task_user(void) {
     if (is_keyboard_master()) {
+      oled_clear();
         // QMK Logo and version information
         // clang-format off
         static const char PROGMEM qmk_logo[] = {
             0x80,0x81,0x82,0x83,0x84,0x85,0x86,0x87,0x88,0x89,0x8a,0x8b,0x8c,0x8d,0x8e,0x8f,0x90,0x91,0x92,0x93,0x94,
             0xa0,0xa1,0xa2,0xa3,0xa4,0xa5,0xa6,0xa7,0xa8,0xa9,0xaa,0xab,0xac,0xad,0xae,0xaf,0xb0,0xb1,0xb2,0xb3,0xb4,
-            0xc0,0xc1,0xc2,0xc3,0xc4,0xc5,0xc6,0xc7,0xc8,0xc9,0xca,0xcb,0xcc,0xcd,0xce,0xcf,0xd0,0xd1,0xd2,0xd3,0xd4,0};
+            0xc0,0xc1,0xc2,0xc3,0xc4,0xc5,0xc6,0xc7,0xc8,0xc9,0xca,0xcb,0xcc,0xcd,0xce,0xcf,0xd0,0xd1,0xd2,0xd3,0xd4, 0, '\n'};
         // clang-format on
 
         oled_write_P(qmk_logo, false);
-        oled_write_P(PSTR("Kyria rev3.0\n\n"), false);
 
-        // Host Keyboard Layer Status
-        oled_write_P(PSTR("Layer: "), false);
-        switch (get_highest_layer(layer_state|default_layer_state)) {
-            case _QWERTY:
-                oled_write_P(PSTR("QWERTY\n"), false);
-                break;
-            case _NAV:
-                oled_write_P(PSTR("Nav\n"), false);
-                break;
-            case _SYM:
-                oled_write_P(PSTR("Sym\n"), false);
-                break;
-            case _FUNCTION:
-                oled_write_P(PSTR("Function\n"), false);
-                break;
-            default:
-                oled_write_P(PSTR("Undefined\n"), false);
-        }
-
-        // Write host Keyboard LED Status to OLEDs
-        led_t led_usb_state = host_keyboard_led_state();
-        oled_write_P(led_usb_state.num_lock    ? PSTR("NUMLCK ") : PSTR("       "), false);
-        oled_write_P(led_usb_state.caps_lock   ? PSTR("CAPLCK ") : PSTR("       "), false);
-        oled_write_P(led_usb_state.scroll_lock ? PSTR("SCRLCK ") : PSTR("       "), false);
+        printCurrentLayer();
+        printActiveMods();
     } else {
         // clang-format off
         static const char PROGMEM kyria_logo[] = {
