@@ -70,9 +70,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
     [_QWERTY] = LAYOUT(
      KC_TAB  , KC_Q ,  KC_W   ,  KC_E  ,   KC_R ,   KC_T ,                                        KC_Y,   KC_U ,  KC_I ,   KC_O ,  KC_P , KC_BSPC,
-     CTL_ESC , GUI_A , ALT_S  ,  SFT_D ,   CTL_F,   KC_G ,                                        KC_H,  CTL_J , SFT_K ,  ALT_L , GUI_L ,CTL_QUOT,
-     KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , KC_LBRC,KC_CAPS,     FKEYS  , KC_RBRC, KC_N,   KC_M ,KC_COMM, KC_DOT ,KC_SLSH, KC_RSFT,
-                                _______, KC_LGUI, ALT_ENT, KC_SPC , NAV   ,     SYM    , KC_SPC ,KC_RALT, KC_RGUI, KC_APP
+     KC_ESC , GUI_A ,  ALT_S  ,  SFT_D ,   CTL_F,   KC_G ,                                        KC_H,  CTL_J , SFT_K ,  ALT_L , GUI_L , KC_QUOTE,
+     KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , _______,KC_CAPS,     _______, _______, KC_N,   KC_M ,KC_COMM, KC_DOT ,KC_SLSH, KC_ENT,
+                                _______, _______, KC_ENT, KC_SPC , NAV   ,     SYM    , KC_SPC , KC_ENT, _______, _______
     ),
 
 /*
@@ -90,9 +90,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        `----------------------------------'  `----------------------------------'
  */
     [_NAV] = LAYOUT(
-      _______, _______, _______, _______, _______, _______,                                     KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_VOLU, KC_DEL,
-      _______, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______,                                     KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_VOLD, KC_INS,
-      _______, _______, _______, _______, _______, _______, _______, KC_SCRL, _______, _______,KC_PAUSE, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_PSCR,
+      _______,  KC_1  ,  KC_2  ,  KC_3  ,  KC_4  , KC_5,                                         KC_6  ,  KC_7  ,  KC_8  ,  KC_9  ,  KC_0  , KC_DEL,
+      _______, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,                                     _______, KC_LEFT,  KC_UP , KC_DOWN,KC_RIGHT,_______,
+      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_END , _______, _______,_______,
                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
 
@@ -181,7 +181,7 @@ bool oled_task_user(void) {
         // clang-format on
 
         oled_write_P(qmk_logo, false);
-        oled_write_P(PSTR("Kyria rev1.0\n\n"), false);
+        oled_write_P(PSTR("Kyria rev3.0\n\n"), false);
 
         // Host Keyboard Layer Status
         oled_write_P(PSTR("Layer: "), false);
@@ -232,9 +232,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
         // Volume control
         if (clockwise) {
-            tap_code(KC_VOLU);
-        } else {
             tap_code(KC_VOLD);
+        } else {
+            tap_code(KC_VOLU);
         }
     } else if (index == 1) {
         // Page up/Page down
