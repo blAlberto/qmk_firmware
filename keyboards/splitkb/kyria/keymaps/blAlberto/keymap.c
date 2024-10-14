@@ -60,18 +60,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-------------------------------------------.                              ,-------------------------------------------.
  * |  Esc   |   Q  |   W  |   E  |   R  |   T  |                              |   Y  |   U  |   I  |   O  |   P  |  Bksp  |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |  Tab   |GUI/A |ALT/S |SFT/D |CTL/F |   G  |                              |CTl/H |SFT/J |ALT/K |GUI/L | ;  : |  ' "   |
+ * |  Tab   |GUI/A |ALT/S |SFT/D |CTL/F |   G  |                              |   H  |CTL/J |SFT/K |ALT/L |GUI/; |  ' "   |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   C  |   V  |   B  |      |CapsLk|  |      |      |   N  |   M  | ,  < | . >  | /  ? |  Enter |
  * |----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        | Mute |      | Space| Enter| Sym  |  | Nav  | Enter| Space|      |      |
+ *                        | Mute |      | Space| Enter| Sym  |  | Nav  | Space| Space|      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_QWERTY] = LAYOUT(
      KC_ESC  , KC_Q ,  KC_W   ,  KC_E  ,   KC_R ,   KC_T ,                                        KC_Y  ,   KC_U ,  KC_I ,   KC_O ,  KC_P , KC_BSPC,
      KC_TAB , GUI_A ,  ALT_S  ,  SFT_D ,   CTL_F,   KC_G ,                                        KC_H  ,  CTL_J , SFT_K ,  ALT_L , GUI_L , KC_QUOTE,
      KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , KC_TRNS,KC_CAPS,     KC_TRNS, KC_TRNS, KC_N  ,   KC_M ,KC_COMM, KC_DOT ,KC_SLSH, KC_ENT,
-                                KC_MUTE, KC_TRNS, KC_SPC, KC_ENT,TL_UPPR,     TL_LOWR, KC_ENT , KC_SPC, KC_TRNS, KC_TRNS
+                                KC_MUTE, KC_TRNS, KC_SPC, KC_ENT,TL_UPPR,     TL_LOWR, KC_SPC , KC_SPC, KC_TRNS, KC_TRNS
     ),
 /*
  * Nav Layer: Navigation
@@ -100,9 +100,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-------------------------------------------.                              ,-------------------------------------------.
  * |    `   |  !   |  @   |  #   |  $   |  %   |                              |   &  |  *   |  (   |  )   |  `   |   ~    |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |        |      |  :   |  /   |  {   |      |                              |      |  -   |  =   |  '   |      |        |
+ * |        |      |  \   |  {   |  [   |      |                              |      |  -   |  =   |  '   |      |        |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |        |      |  |   |  \   |  }   |      |      |      |  |      |      |      |  _   |  +   |  "   |      |        |
+ * |        |      |  |   |  }   |  ]   |      |      |      |  |      |      |      |  _   |  +   |  "   |      |        |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        |      |      |      |      |      |  |      |      |      |      |      |
@@ -110,8 +110,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
     [_SYM] = LAYOUT(
       KC_GRV , KC_EXLM,  KC_AT , KC_HASH,  KC_DLR, KC_PERC,                                     KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,  KC_GRV, KC_TILD,
-     KC_TRNS , KC_TRNS, KC_COLN, KC_SLSH, KC_LBRC, KC_TRNS,                                     KC_TRNS, KC_MINS,  KC_EQL, KC_QUOT, KC_TRNS, KC_TRNS,
-     KC_TRNS , KC_TRNS, KC_PIPE, KC_BSLS, KC_RBRC, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_UNDS, KC_PLUS,  KC_DQT, KC_TRNS, KC_TRNS,
+     KC_TRNS , KC_TRNS, KC_BSLS, KC_LCBR, KC_LBRC, KC_TRNS,                                     KC_TRNS, KC_MINS,  KC_EQL, KC_QUOT, KC_TRNS, KC_TRNS,
+     KC_TRNS , KC_TRNS, KC_PIPE, KC_RCBR, KC_RBRC, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_UNDS, KC_PLUS,  KC_DQT, KC_TRNS, KC_TRNS,
                                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
     ),
 
