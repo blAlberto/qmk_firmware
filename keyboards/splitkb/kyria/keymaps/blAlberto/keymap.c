@@ -62,16 +62,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * |  Tab   |GUI/A |ALT/S |SFT/D |CTL/F |   G  |                              |CTl/H |SFT/J |ALT/K |GUI/L | ;  : |  ' "   |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * | LShift |   Z  |   X  |   C  |   V  |   B  |      |CapsLk|  |F-keys|  ] } |   N  |   M  | ,  < | . >  | /  ? | RShift |
+ * | LShift |   Z  |   X  |   C  |   V  |   B  |      |CapsLk|  |      |      |   N  |   M  | ,  < | . >  | /  ? |  Enter |
  * |----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        |      |      | Enter| Space| Sym  |  | Nav  | Space| Enter|      |      |
+ *                        | Mute |      | Space| Enter| Sym  |  | Nav  | Enter| Space|      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_QWERTY] = LAYOUT(
-     KC_ESC  , KC_Q ,  KC_W   ,  KC_E  ,   KC_R ,   KC_T ,                                        KC_Y,   KC_U ,  KC_I ,   KC_O ,  KC_P , KC_BSPC,
-     KC_TAB , GUI_A ,  ALT_S  ,  SFT_D ,   CTL_F,   KC_G ,                                        KC_H,  CTL_J , SFT_K ,  ALT_L , GUI_L , KC_QUOTE,
-     KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , KC_TRNS,KC_CAPS,     KC_TRNS, KC_TRNS, KC_N,   KC_M ,KC_COMM, KC_DOT ,KC_SLSH, KC_ENT,
-                                  KC_TRNS, KC_TRNS, KC_ENT, KC_SPC,TL_UPPR,     TL_LOWR, KC_SPC , KC_ENT, KC_TRNS, KC_TRNS
+     KC_ESC  , KC_Q ,  KC_W   ,  KC_E  ,   KC_R ,   KC_T ,                                        KC_Y  ,   KC_U ,  KC_I ,   KC_O ,  KC_P , KC_BSPC,
+     KC_TAB , GUI_A ,  ALT_S  ,  SFT_D ,   CTL_F,   KC_G ,                                        KC_H  ,  CTL_J , SFT_K ,  ALT_L , GUI_L , KC_QUOTE,
+     KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , KC_TRNS,KC_CAPS,     KC_TRNS, KC_TRNS, KC_N  ,   KC_M ,KC_COMM, KC_DOT ,KC_SLSH, KC_ENT,
+                                KC_MUTE, KC_TRNS, KC_SPC, KC_ENT,TL_UPPR,     TL_LOWR, KC_ENT , KC_SPC, KC_TRNS, KC_TRNS
     ),
 /*
  * Nav Layer: Navigation
@@ -190,7 +190,7 @@ void printCurrentLayer(void) {
 }
 
 void printActiveMods(void) {
-  char mod_str[25] = "";
+  char mod_str[25] = "\n";
 
   led_t led_usb_state = host_keyboard_led_state();
   if (led_usb_state.caps_lock) {
@@ -212,7 +212,7 @@ void printActiveMods(void) {
       strcat(mod_str, "Alt ");
   }
   if (mods & MOD_MASK_GUI) {
-      strcat(mod_str, "GUI ");
+      strcat(mod_str, "GUI");
   }
   oled_write_ln(mod_str, false);
 }
@@ -222,13 +222,13 @@ bool oled_task_user(void) {
       oled_clear();
         // QMK Logo and version information
         // clang-format off
-        static const char PROGMEM qmk_logo[] = {
-            0x80,0x81,0x82,0x83,0x84,0x85,0x86,0x87,0x88,0x89,0x8a,0x8b,0x8c,0x8d,0x8e,0x8f,0x90,0x91,0x92,0x93,0x94,
-            0xa0,0xa1,0xa2,0xa3,0xa4,0xa5,0xa6,0xa7,0xa8,0xa9,0xaa,0xab,0xac,0xad,0xae,0xaf,0xb0,0xb1,0xb2,0xb3,0xb4,
-            0xc0,0xc1,0xc2,0xc3,0xc4,0xc5,0xc6,0xc7,0xc8,0xc9,0xca,0xcb,0xcc,0xcd,0xce,0xcf,0xd0,0xd1,0xd2,0xd3,0xd4, 0, '\n'};
-        // clang-format on
-
-        oled_write_P(qmk_logo, false);
+        // static const char PROGMEM qmk_logo[] = {
+        //     0x80,0x81,0x82,0x83,0x84,0x85,0x86,0x87,0x88,0x89,0x8a,0x8b,0x8c,0x8d,0x8e,0x8f,0x90,0x91,0x92,0x93,0x94,
+        //     0xa0,0xa1,0xa2,0xa3,0xa4,0xa5,0xa6,0xa7,0xa8,0xa9,0xaa,0xab,0xac,0xad,0xae,0xaf,0xb0,0xb1,0xb2,0xb3,0xb4,
+        //     0xc0,0xc1,0xc2,0xc3,0xc4,0xc5,0xc6,0xc7,0xc8,0xc9,0xca,0xcb,0xcc,0xcd,0xce,0xcf,0xd0,0xd1,0xd2,0xd3,0xd4, 0};
+        // // clang-format on
+        //
+        // oled_write_P(qmk_logo, false);
 
         printCurrentLayer();
         printActiveMods();
@@ -257,9 +257,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
         // Volume control
         if (clockwise) {
-            tap_code(KC_VOLD);
-        } else {
             tap_code(KC_VOLU);
+        } else {
+            tap_code(KC_VOLD);
         }
     } else if (index == 1) {
         // Page up/Page down
